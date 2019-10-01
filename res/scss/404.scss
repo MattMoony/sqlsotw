@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css?family=Oswald&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+
+html, body {
+    padding: 0;
+    margin: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background-image: url(/media/404_donkey.jpg);
+    background-position: center;
+
+    main {
+        width: 100%;
+        height: 100%;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(0,0,0,.4);
+
+        & > div {
+            display: flex;
+            justify-content: space-between;
+            width: 50%;
+            padding: 25px;
+
+            background-color: rgba(255,255,255,.7);
+            border: 2px solid #f2f2f2;
+            border-radius: 4px;
+
+            h1 {
+                font-family: 'Oswald', serif;
+                margin: 0;
+            }
+
+            p {
+                font-family: 'Open Sans', sans-serif;
+                margin: 0;
+            }
+
+            span.highlight {
+                color: #FF6E34;
+            }
+
+            i {
+                font-size: 4em;
+                color: #FFEA67;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    main {
+        & > div {
+            display: block !important;
+
+            div {
+                text-align: center;
+                margin: 15px;
+            }
+
+            i {
+                font-size: 2.5em;
+            }
+        }
+    }
+}

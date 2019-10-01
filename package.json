@@ -1,0 +1,15 @@
+{
+  "name": "sqlsotw",
+  "version": "1.0.0",
+  "description": "SQL statement of the week.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "MattMoony",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
