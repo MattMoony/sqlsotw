@@ -28,22 +28,35 @@
     <article>
         <div class="content">
             <div class="task-desc">
-                <h2>Task Title</h2>
-                <p>
+                <h2 id="task-title">Task Title</h2>
+                <p id="task-description">
                     Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
                     labore et dolore magna aliquyam erat, sed diam voluptua.
                 </p>
             </div>
-            <form class="task-reso">
-                <!-- <label for="ans-in">SQL-Query:</label> -->
+            <form id="form-in">
                 <textarea id="ans-in" rows="8" placeholder="SELECT * ..."></textarea>
-                <input type="submit" value="Check!" />
+                <input id="sub-in" type="submit" value="Check!" />
             </form>
+            <div class="task-reso">
+                <pre id="reso-out">SELECT *
+FROM employees;</pre>
+                <div class="buttons-wrapper">
+                    <div id="reso-bug" title="Report a bug" tabindex="0">
+                        <i class="fas fa-bug"></i>
+                    </div>
+                    <div id="reso-next" title="Next" tabindex="0">
+                        <i class="fas fa-forward"></i>
+                    </div>
+                </div>
+            </div>
         </div>
     </article>
     <footer>
 
     </footer>
+
+    <script defer src="scripts/index.js"></script>
 </body>
 
 </html>

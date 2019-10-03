@@ -1,6 +1,22 @@
 @import url("https://fonts.googleapis.com/css?family=Oswald&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Ubuntu&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Ubuntu+Mono&display=swap");
+@keyframes fill-left {
+  0% {
+    background-position: 100% 0%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}
+@keyframes opp-fill-left {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 100% 0%;
+  }
+}
 html, body {
   padding: 0;
   margin: 0;
@@ -42,23 +58,17 @@ html article .content, body article .content {
   margin: 0 auto;
   padding: 10px;
 }
-html article .content h2, body article .content h2 {
-  font-size: 1.8em;
-  font-family: "Oswald", sans-serif;
-  margin: 22.5px 0;
-}
 html article .content .task-desc, body article .content .task-desc {
   border-bottom: 2.5px solid #ededed;
   margin-bottom: 25px;
   padding-bottom: 15px;
 }
-html article .content label, body article .content label {
-  display: inline-block;
-  margin-bottom: 10px;
-  border-left: 2.5px solid #444;
-  padding-left: 5px;
+html article .content .task-desc h2, body article .content .task-desc h2 {
+  font-size: 1.8em;
+  font-family: "Oswald", sans-serif;
+  margin: 22.5px 0;
 }
-html article .content #ans-in, body article .content #ans-in {
+html article .content form #ans-in, body article .content form #ans-in {
   width: 100%;
   box-sizing: border-box;
   border: 1.5px solid #f2f2f2;
@@ -69,11 +79,16 @@ html article .content #ans-in, body article .content #ans-in {
   font-family: "Ubuntu Mono", monospace;
   font-size: 1em;
   font-weight: lighter;
+  transition: 0.3s ease;
 }
-html article .content #ans-in:focus, body article .content #ans-in:focus {
+html article .content form #ans-in:hover, body article .content form #ans-in:hover {
+  transform: scale(1.01);
+}
+html article .content form #ans-in:focus, body article .content form #ans-in:focus {
   outline: none;
+  transform: scale(1.02);
 }
-html article .content input[type=submit], body article .content input[type=submit] {
+html article .content form input[type=submit], body article .content form input[type=submit] {
   font-family: "Ubuntu", sans-serif;
   box-sizing: border-box;
   width: 100%;
@@ -83,9 +98,63 @@ html article .content input[type=submit], body article .content input[type=submi
   padding: 7.5px;
   background-color: rgba(0, 0, 0, 0);
   color: #862CFF;
+  background-position: 100% 0%;
+  background-size: 200% 100%;
+  background-image: linear-gradient(to right, rgba(134, 44, 255, 0.1) 0% 48%, rgba(0, 0, 0, 0) 52% 100%);
+  animation: opp-fill-left 0.15s;
+  transition: 0.3s ease;
 }
-html article .content input[type=submit]:hover, body article .content input[type=submit]:hover {
+html article .content form input[type=submit]:hover, html article .content form input[type=submit]:focus, body article .content form input[type=submit]:hover, body article .content form input[type=submit]:focus {
+  outline: none;
   cursor: pointer;
+  background-position: 0% 0%;
+  animation: fill-left 0.2s;
+  transform: scale(1.02);
+}
+html article .content .task-reso, body article .content .task-reso {
+  border-top: 3px solid #ededed;
+  margin-top: 25px;
+  padding-top: 15px;
+  padding-bottom: 20px;
+}
+html article .content .task-reso #reso-out, body article .content .task-reso #reso-out {
+  font-family: "Ubuntu Mono", monospace;
+  text-align: left;
+  padding: 10px;
+  box-sizing: border-box;
+  width: 100%;
+  border-left: 2.5px solid #FF2C5F;
+}
+html article .content .task-reso .buttons-wrapper, body article .content .task-reso .buttons-wrapper {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+}
+html article .content .task-reso .buttons-wrapper #reso-next, html article .content .task-reso .buttons-wrapper #reso-bug, body article .content .task-reso .buttons-wrapper #reso-next, body article .content .task-reso .buttons-wrapper #reso-bug {
+  display: inline-block;
+  font-size: 1.2em;
+  color: #862CFF;
+  border: 1.5px solid #862CFF;
+  border-radius: 50%;
+  margin: 0 1.5px;
+  background-position: 100% 0%;
+  background-size: 200% 100%;
+  background-image: linear-gradient(to right, rgba(134, 44, 255, 0.1) 0% 48%, rgba(0, 0, 0, 0) 52% 100%);
+  animation: opp-fill-left 0.15s;
+  transition: 0.3s ease;
+}
+html article .content .task-reso .buttons-wrapper #reso-next:hover, html article .content .task-reso .buttons-wrapper #reso-next:focus, html article .content .task-reso .buttons-wrapper #reso-bug:hover, html article .content .task-reso .buttons-wrapper #reso-bug:focus, body article .content .task-reso .buttons-wrapper #reso-next:hover, body article .content .task-reso .buttons-wrapper #reso-next:focus, body article .content .task-reso .buttons-wrapper #reso-bug:hover, body article .content .task-reso .buttons-wrapper #reso-bug:focus {
+  outline: none;
+  cursor: pointer;
+  background-position: 0% 0%;
+  animation: fill-left 0.2s;
+  transform: scale(1.05);
+}
+html article .content .task-reso .buttons-wrapper #reso-bug, body article .content .task-reso .buttons-wrapper #reso-bug {
+  padding: 5px 6px;
+}
+html article .content .task-reso .buttons-wrapper #reso-next, body article .content .task-reso .buttons-wrapper #reso-next {
+  padding: 5px 5px 5px 7.5px;
 }
 
 @media only screen and (max-width: 600px) {

@@ -2,6 +2,24 @@
 @import url('https://fonts.googleapis.com/css?family=Ubuntu&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Ubuntu+Mono&display=swap');
 
+@keyframes fill-left {
+    0% {
+        background-position: 100% 0%;
+    }
+    100% {
+        background-position: 0% 0%;
+    }
+}
+
+@keyframes opp-fill-left {
+    0% {
+        background-position: 0% 0%;
+    }
+    100% {
+        background-position: 100% 0%;
+    }
+}
+
 html, body {
     padding: 0;
     margin: 0;
@@ -52,57 +70,126 @@ html, body {
             max-width: 60%;
             margin: 0 auto;
             padding: 10px;
-            
-            h2 {
-                font-size: 1.8em;
-                font-family: 'Oswald', sans-serif;
-                margin: 22.5px 0;
-            }
 
             .task-desc {
                 border-bottom: 2.5px solid #ededed;
                 margin-bottom: 25px;
                 padding-bottom: 15px;
+
+                h2 {
+                    font-size: 1.8em;
+                    font-family: 'Oswald', sans-serif;
+                    margin: 22.5px 0;
+                }
             }
             
-            label {
-                display: inline-block;
-                margin-bottom: 10px;
-                border-left: 2.5px solid #444;
-                padding-left: 5px;
-            }
+            form {
+                #ans-in {
+                    width: 100%;
+                    box-sizing: border-box;
+                    border: 1.5px solid #f2f2f2;
+                    border-left: 2.5px solid #444;
+                    border-radius: 4px;
+                    resize: none;
+                    padding: 10px;
+                    font-family: 'Ubuntu Mono', monospace;
+                    font-size: 1em;
+                    font-weight: lighter;
+                    transition: .3s ease;
 
-            #ans-in {
-                width: 100%;
-                box-sizing: border-box;
-                border: 1.5px solid #f2f2f2;
-                border-left: 2.5px solid #444;
-                border-radius: 4px;
-                resize: none;
-                padding: 10px;
-                font-family: 'Ubuntu Mono', monospace;
-                font-size: 1em;
-                font-weight: lighter;
+                    &:hover {
+                        transform: scale(1.01);
+                    }
+    
+                    &:focus {
+                        outline: none;
+                        transform: scale(1.02);
+                    }
+                }
+    
+                input[type="submit"] {
+                    font-family: 'Ubuntu', sans-serif;
+                    box-sizing: border-box;
+                    width: 100%;
+                    margin-top: 2.5px;
+                    border: 1.5px solid #862CFF;
+                    border-radius: 2px;
+                    padding: 7.5px;
+                    background-color: rgba(0,0,0,0);
+                    color: #862CFF;
+                    
+                    background-position: 100% 0%;
+                    background-size: 200% 100%;
+                    background-image: linear-gradient(to right, rgba(134, 44, 255, 0.1) 0% 48%, rgba(0,0,0,0) 52% 100%);
+                    
+                    animation: opp-fill-left .15s;
+                    transition: .3s ease;
 
-                &:focus {
-                    outline: none;
+                    &:hover, &:focus {
+                        outline: none;
+                        cursor: pointer;
+                        background-position: 0% 0%;
+                        animation: fill-left .2s;
+                        transform: scale(1.02);
+                    }
                 }
             }
 
-            input[type="submit"] {
-                font-family: 'Ubuntu', sans-serif;
-                box-sizing: border-box;
-                width: 100%;
-                margin-top: 2.5px;
-                border: 1.5px solid #862CFF;
-                // border: none;
-                border-radius: 2px;
-                padding: 7.5px;
-                background-color: rgba(0,0,0,0);
-                color: #862CFF;
+            .task-reso {
+                border-top: 3px solid #ededed;
+                margin-top: 25px;
+                padding-top: 15px;
+                padding-bottom: 20px;
+                // max-height: 0;
+                // overflow: hidden;
+                // transition: max-height .5s ease;
 
-                &:hover {
-                    cursor: pointer;
+                #reso-out {
+                    font-family: 'Ubuntu Mono', monospace;
+                    text-align: left;
+                    padding: 10px;
+                    box-sizing: border-box;
+                    width: 100%;
+                    border-left: 2.5px solid #FF2C5F;
+                    // #2CFF51, #FF2C5F
+                }
+
+                .buttons-wrapper {
+                    display: flex;
+                    width: 100%;
+                    justify-content: flex-end;
+
+                    #reso-next, #reso-bug {
+                        display: inline-block;
+                        font-size: 1.2em;
+                        color: #862CFF;
+                        border: 1.5px solid #862CFF;
+                        border-radius: 50%;
+                        margin: 0 1.5px;
+    
+                        background-position: 100% 0%;
+                        background-size: 200% 100%;
+                        background-image: linear-gradient(to right, rgba(134, 44, 255, 0.1) 0% 48%, rgba(0,0,0,0) 52% 100%);
+                        
+                        animation: opp-fill-left .15s;
+                        transition: .3s ease;
+    
+                        &:hover, &:focus {
+                            outline: none;
+                            cursor: pointer;
+                            background-position: 0% 0%;
+                            animation: fill-left .2s;
+                            transform: scale(1.05);
+                        }
+                    }
+
+                    #reso-bug {
+                        padding: 5px 6px;
+                    }
+
+                    #reso-next {
+                        padding: 5px 5px 5px 7.5px;
+                    }
                 }
             }
         }

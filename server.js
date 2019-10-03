@@ -19,9 +19,44 @@ db_con.connect(err => {
         db_con.query(`SELECT title, description, solution
                       FROM tasks
                       WHERE id = ?;`, [+req.params.id], (err, result, fields) => {
-            if (err) res.status(500).send('Error 500: Internal server error!');
-            res.setHeader('Content-Type', 'application/json');
-            res.send(JSON.stringify(result));
+            if (err) {
+                res.status(500).send('Error 500: Internal server error!');
+            } else {
+                res.setHeader('Content-Type', 'application/json');
+                res.send(JSON.stringify(result[0]));
+            }
+        });
+    });
+
+    app.get('/api/count-tasks', (req, res) => {
+        let lang = Object.keys(req.query).includes('lang') ? req.query.lang : 'en';
+
+        db_con.query(`SELECT COUNT(*) "count" 
+                      FROM tasks
+                      WHERE lang = ?;`, [lang], (err, result, fields) => {
+            if (err) {
+                res.status(500).send('Error 500: Internal server error!');
+            } else {
+                res.setHeader('Content-Type', 'application/json');
+                res.send(JSON.stringify({
+                    amount: result[0].count,
+                }));
+            }
+        });
+    });
+
+    app.get('/api/get-ids', (req, res) => {
+        let lang = Object.keys(req.query).includes('lang') ? req.query.lang : 'en';
+
+        db_con.query(`SELECT id
+                      FROM tasks
+                      WHERE lang = ?;`, [lang], (err, result, fields) => {
+            if (err) {
+                res.status(500).send('Error 500: Internal server error!');
+            } else {
+                res.setHeader('Content-Type', 'application/json');
+                res.send(result.map(x => x.id));
+            }
         });
     });
 
